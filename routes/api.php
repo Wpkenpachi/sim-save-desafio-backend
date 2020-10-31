@@ -23,10 +23,10 @@ Route::group(['prefix' => 'company/'], function ($router) {
 
 });
 
-Route::group(['prefix' => 'employees'], function ($router) {
-	$router->post('/');
-	$router->post('/{id}');
-	$router->delete('/');
+Route::group(['prefix' => 'employee/'], function ($router) {
+	$router->post('/', 'EmployeeController@createEmployee');
+	$router->post('/{id}', 'EmployeeController@editEmployee');
+	$router->delete('/{id}', 'EmployeeController@deleteEmployee');
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
