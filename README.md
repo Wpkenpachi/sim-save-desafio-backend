@@ -1,3 +1,24 @@
+# SOLVED TEST
+Features Desenvolvidas
+- Create, Update e Remove de Funcionários de uma empresa (Employees).
+- Adição da lista de Funcionários no retorno dos detalhes da empresa.
+- Validação de campos de requisição
+- Implementação de repository pattern
+- Implementação de Testes de Feature
+
+## Tests
+Rodando os testes
+```
+$ php vendor/phpunit/phpunit/phpunit
+```
+
+Testes implementados
+- Criação de Funcionário
+- Atualização de Funcionário
+- Remoção de Funcionário
+- Erro na remoção de Funcionário
+- Retorno de funcionários nos detalhes da empresa
+
 
 # Teste Back-End SimSave
 Teste para candidatura para vaga de desenvolvedor back-end da SimSave
