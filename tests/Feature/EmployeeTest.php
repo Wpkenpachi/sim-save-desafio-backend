@@ -97,5 +97,6 @@ class EmployeeTest extends TestCase
                 ->assertJson([
                         "msg" => "Error trying to remove employee, maybe it does not  exists anymore."
                 ]);
+                $this->clearDb();
     }
 }

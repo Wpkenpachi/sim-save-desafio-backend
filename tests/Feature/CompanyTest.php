@@ -40,7 +40,7 @@ class CompanyTest extends TestCase
             ]
         ];
         Employee::whereIn('email', ['pbk@gmail.com', 'wft@gmail.com'])->delete();
-        DB::table('companies')->insert($employees);
+        DB::table('employees')->insert($this->employees);
     }
 
     public function testCompanyDetailsWithEmployees() {
@@ -49,5 +49,6 @@ class CompanyTest extends TestCase
         $response = $this->getJson('/api/company/' . $company->id);
         $response->assertStatus(200)
                 ->assertJson($company->toArray());
+        $this->setDb();
     }
 }
