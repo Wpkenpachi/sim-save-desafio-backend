@@ -15,7 +15,7 @@ class CompanyTest extends TestCase
     private $employees;
 
     private function setDb() {
-        Company::where('cnpj', '29642341000142')->delete();
+        DB::table('companies')->where('cnpj', '29642341000142')->delete();
         $this->company = Company::create([
             'name' => "SimSave",
             'cnpj' => "29642341000142",
@@ -39,16 +39,16 @@ class CompanyTest extends TestCase
                 "admission_date"=> "2020-10-31"
             ]
         ];
-        Employee::whereIn('email', ['pbk@gmail.com', 'wft@gmail.com'])->delete();
+        DB::table('employees')->whereIn('email', ['pbk@gmail.com', 'wft@gmail.com'])->delete();
         DB::table('employees')->insert($this->employees);
     }
 
     public function testCompanyDetailsWithEmployees() {
+        $this->setDb();
         $company = Company::where('cnpj', '29642341000142')->first();
         $company->employees = $this->employees;
         $response = $this->getJson('/api/company/' . $company->id);
         $response->assertStatus(200)
                 ->assertJson($company->toArray());
-        $this->setDb();
     }
 }

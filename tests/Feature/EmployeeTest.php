@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use App\Models\Company;
 use App\Models\Employee;
 
@@ -12,7 +13,7 @@ class EmployeeTest extends TestCase
     private $company;
 
     private function clearDb() {
-        Company::where('cnpj', '29642341000142')->delete();
+        DB::table('companies')->where('cnpj', '29642341000142')->delete();
         $this->company = Company::create([
             'name' => "SimSave",
             'cnpj' => "29642341000142",
@@ -97,6 +98,5 @@ class EmployeeTest extends TestCase
                 ->assertJson([
                         "msg" => "Error trying to remove employee, maybe it does not  exists anymore."
                 ]);
-                $this->clearDb();
     }
 }
