@@ -7,7 +7,7 @@ use App\Models\Company;
 
 class CompanyController extends Controller
 {
-	
+
     public function listCompanies(Request $request)
     {
     	return Company::get();

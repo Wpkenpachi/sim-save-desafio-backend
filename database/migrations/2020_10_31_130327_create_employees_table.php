@@ -15,6 +15,11 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
+            $table->string("name");
+            $table->string("role");
+            $table->string("email")->unique();
+            $table->string("phone");
+            $table->date("admission_date");
             $table->timestamps();
         });
     }

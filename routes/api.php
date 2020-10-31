@@ -23,6 +23,12 @@ Route::group(['prefix' => 'company/'], function ($router) {
 
 });
 
+Route::group(['prefix' => 'employees'], function ($router) {
+	$router->post('/');
+	$router->post('/{id}');
+	$router->delete('/');
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
